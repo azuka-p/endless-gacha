@@ -1,3 +1,4 @@
+# Godot (https://github.com/github/gitignore/blob/main/Godot.gitignore)
 # Godot 4+ specific ignores
 .godot/
 
@@ -13,6 +14,14 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# Project-specific files & folders to ignore
+
+## Python virtual environment (contains gdtoolkit & pre-commit)
+.env/
+.venv/
+env/
+venv/
 
 # IntelliJ
 .idea/
