@@ -1,0 +1,42 @@
+[gd_scene format=2]
+
+[node name="NavBar" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -20.0
+alignment = 1
+
+[node name="Dungeon" type="Button" parent="HBoxContainer"]
+margin_left = 356.0
+margin_right = 425.0
+margin_bottom = 20.0
+text = "Dungeon"
+
+[node name="Gacha" type="Button" parent="HBoxContainer"]
+margin_left = 429.0
+margin_right = 480.0
+margin_bottom = 20.0
+text = "Gacha"
+
+[node name="Home" type="Button" parent="HBoxContainer"]
+margin_left = 484.0
+margin_right = 535.0
+margin_bottom = 20.0
+text = "Home"
+
+[node name="Save" type="Button" parent="HBoxContainer"]
+margin_left = 539.0
+margin_right = 580.0
+margin_bottom = 20.0
+text = "Save"
+
+[node name="Main Menu" type="Button" parent="HBoxContainer"]
+margin_left = 584.0
+margin_right = 667.0
+margin_bottom = 20.0
+text = "Main Menu"
