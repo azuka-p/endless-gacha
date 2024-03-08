@@ -3,6 +3,7 @@
 https://gandalfhardcore.itch.io/free-pixel-art
 https://escalonamusic.itch.io/action-rpg-music-free
 https://leohpaz.itch.io/rpg-essentials-sfx-free
+https://mounirtohami.itch.io/pixel-art-gui-elements
 
 https://fontmeme.com/pixel-fonts/
 https://github.com/Ertain/Random-Name-Generator
@@ -13,3 +14,5 @@ https://forum.godotengine.org/t/how-to-add-frames-from-a-sprite-sheet-in-code/52
 https://gamedevacademy.org/spriteframes-in-godot-complete-guide/
 https://gamedevacademy.org/atlastexture-in-godot-complete-guide/
 https://docs.godotengine.org/en/3.5/
+https://forum.godotengine.org/t/how-to-set-min-size-of-a-button-through-code/5686
+https://docs.godotengine.org/en/3.5/tutorials/scripting/singletons_autoload.html

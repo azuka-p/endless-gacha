@@ -24,6 +24,16 @@ config/name="Endless Gacha"
 run/main_scene="res://scenes/MainMenu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+CharacterInventory="*res://scenes/home/CharacterInventory.gd"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/stretch/mode="2d"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

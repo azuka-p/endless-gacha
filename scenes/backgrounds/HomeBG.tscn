@@ -5,7 +5,7 @@
 [node name="HomeBG" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.703, 0.735 )
+scale = Vector2( 0.88, 0.88 )
 z_index = -5
 texture = ExtResource( 1 )
 centered = false
