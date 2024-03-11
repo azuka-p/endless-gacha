@@ -21,3 +21,4 @@ https://docs.godotengine.org/en/3.5/tutorials/io/data_paths.html
 https://docs.godotengine.org/en/3.5/classes/class_resourcesaver.html
 https://docs.godotengine.org/en/3.5/classes/class_resourceloader.html
 https://github.com/godotengine/godot/issues/28712
+https://www.reddit.com/r/godot/comments/15wa105/how_can_i_randomize_a_value_using_a_percentage/

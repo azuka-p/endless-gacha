@@ -15,7 +15,10 @@ func save_game():
 		list.append([
 			n.full_name,
 			n.gender,
-			n.composites
+			n.composites,
+			n.rarity,
+			n.level,
+			n.exp_to_next
 		])
 	
 	save.character_list = list

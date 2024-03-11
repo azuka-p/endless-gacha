@@ -5,6 +5,9 @@ class_name Character
 var full_name: String = ""
 var gender: String = ""
 var composites: Array
+var rarity: int
+var level: int
+var exp_to_next: int
 
 var rng = RandomNumberGenerator.new()
 
@@ -25,15 +28,25 @@ func init(is_load: bool = false):  # Pseudo-constructor
 		rng.randomize()
 		var schlong = rng.randi_range(0, 1)
 		if schlong == 0:
-			full_name = names.get_full_name('female')
 			gender = "female"
 			generate_female()
-			print(full_name, ", ", gender)
 		else:
-			full_name = names.get_full_name('male')
 			gender = "male"
 			generate_male()
-			print(full_name, ", ", gender)
+		full_name = names.get_full_name(gender)
+		
+		rng.randomize()
+		var roll = rng.randf()
+		if roll <= 0.05:
+			rarity = 3
+		elif roll <= 0.25:
+			rarity = 2
+		else:
+			rarity = 1
+		
+		level = 1
+		exp_to_next = LevelData.leveling[rarity]
+		print(full_name, ", ", gender, ", ", rarity)
 
 func random(size: int):
 	rng.randomize()
@@ -80,6 +93,9 @@ func load_character(character: Array):
 	full_name = character[0]
 	gender = character[1]
 	composites = character[2]
+	rarity = character[3]
+	level = character[4]
+	exp_to_next = character[5]
 	var parts: Array
 	if gender == "female":
 		parts = Female.parts

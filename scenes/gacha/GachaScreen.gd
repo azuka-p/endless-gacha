@@ -19,11 +19,13 @@ func _on_Summon10_pressed():
 		new_char.init()
 		CharacterInventory.characters.append(new_char)
 		new_panel.add_child(new_char)
-		var new_label = Label.new()
-		new_label.text = new_char.full_name
-		new_label.rect_min_size = Vector2(160, 14)
+		var new_label = RichTextLabel.new()
+		new_label.bbcode_enabled = true
+		for _j in range(new_char.rarity):
+			new_label.add_image(preload("res://assets/star.png"), 12, 12)
+		new_label.add_text(" " + new_char.full_name)
+		new_label.rect_min_size = Vector2(160, 18)
 		new_label.rect_position = Vector2(0, 10)
-		new_label.align = Label.ALIGN_CENTER
 		new_panel.add_child(new_label)
 	print("Total char: ", len(CharacterInventory.characters))
 
