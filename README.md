@@ -16,4 +16,8 @@ https://gamedevacademy.org/atlastexture-in-godot-complete-guide/
 https://docs.godotengine.org/en/3.5/
 https://forum.godotengine.org/t/how-to-set-min-size-of-a-button-through-code/5686
 https://docs.godotengine.org/en/3.5/tutorials/scripting/singletons_autoload.html
-https://www.reddit.com/r/godot/comments/h0u5u2/how_to_save_instances_and_objects/
+https://www.youtube.com/watch?v=43BZsLZheA4
+https://docs.godotengine.org/en/3.5/tutorials/io/data_paths.html
+https://docs.godotengine.org/en/3.5/classes/class_resourcesaver.html
+https://docs.godotengine.org/en/3.5/classes/class_resourceloader.html
+https://github.com/godotengine/godot/issues/28712
