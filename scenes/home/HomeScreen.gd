@@ -9,7 +9,7 @@ func _ready():
 		new_panel.self_modulate = "00ffffff"
 		new_panel.set_h_size_flags(2)
 		new_panel.set_v_size_flags(2)
-		$NinePatchRect/GridContainer.add_child(new_panel)
+		$NinePatchRect/ScrollContainer/GridContainer.add_child(new_panel)
 		var character = character_list[i]
 		new_panel.add_child(character)
 		var new_label = Label.new()
@@ -20,6 +20,6 @@ func _ready():
 		new_panel.add_child(new_label)
 
 func _on_HomeScreen_tree_exiting():
-	for n in $NinePatchRect/GridContainer.get_children():
+	for n in $NinePatchRect/ScrollContainer/GridContainer.get_children():
 		n.remove_child(n.get_child(0))
-		$NinePatchRect/GridContainer.remove_child(n)
+		$NinePatchRect/ScrollContainer/GridContainer.remove_child(n)

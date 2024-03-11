@@ -75,7 +75,7 @@ func generate_male():
 	]
 	
 	generate_idle(parts, composites)
-	
+
 func load_character(character: Array):
 	full_name = character[0]
 	gender = character[1]

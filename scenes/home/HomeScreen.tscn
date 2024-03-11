@@ -33,9 +33,15 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
-margin_left = 15.0
-margin_top = 10.0
+[node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect"]
+margin_top = 8.0
+margin_right = 850.0
+margin_bottom = 406.0
+rect_min_size = Vector2( 850, 400 )
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect/ScrollContainer"]
+margin_right = 850.0
+margin_bottom = 400.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 5
