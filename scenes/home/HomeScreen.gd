@@ -9,6 +9,7 @@ func _ready():
 		new_panel.self_modulate = "00ffffff"
 		new_panel.set_h_size_flags(2)
 		new_panel.set_v_size_flags(2)
+		new_panel.connect("gui_input", self, "_on_Panel_clicked", [new_panel])
 		$NinePatchRect/ScrollContainer/GridContainer.add_child(new_panel)
 		var character = character_list[i]
 		new_panel.add_child(character)
@@ -26,3 +27,9 @@ func _on_HomeScreen_tree_exiting():
 	for n in $NinePatchRect/ScrollContainer/GridContainer.get_children():
 		n.remove_child(n.get_child(0))
 		$NinePatchRect/ScrollContainer/GridContainer.remove_child(n)
+
+func _on_Panel_clicked(event: InputEvent, panel: Panel):
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
+		print(self)
+		print(panel)
+		print("clicked")

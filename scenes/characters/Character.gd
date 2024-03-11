@@ -102,3 +102,9 @@ func load_character(character: Array):
 	else:
 		parts = Male.parts
 	generate_idle(parts, composites)
+
+func add_exp(amount: int):
+	while amount >= exp_to_next:
+		amount -= exp_to_next
+		level += 1
+	exp_to_next -= amount
