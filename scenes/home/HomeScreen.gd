@@ -1,6 +1,10 @@
 extends Control
 
 
+var selected_upgrade: Panel
+var selected_fodder := []
+var toggled_upgrade := false
+
 func _ready():
 	var character_list = CharacterInventory.characters
 	for i in range(len(character_list)):
@@ -30,6 +34,37 @@ func _on_HomeScreen_tree_exiting():
 
 func _on_Panel_clicked(event: InputEvent, panel: Panel):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
-		print(self)
-		print(panel)
-		print("clicked")
+		if not toggled_upgrade:
+			if selected_upgrade == null:
+				panel.self_modulate = "ffffff"
+				selected_upgrade = panel
+				$VBoxContainer/Select.disabled = false
+			elif selected_upgrade == panel:
+				panel.self_modulate = "00ffffff"
+				selected_upgrade = null
+				$VBoxContainer/Select.disabled = true
+			elif selected_upgrade != panel:
+				selected_upgrade.self_modulate = "00ffffff"
+				selected_upgrade = panel
+				panel.self_modulate = "ffffff"
+		elif toggled_upgrade:
+			if panel != selected_upgrade and not selected_fodder.has(panel):
+				panel.self_modulate = "ff0000"
+				selected_fodder.append(panel)
+			elif selected_fodder.has(panel):
+				panel.self_modulate = "00ffffff"
+				selected_fodder.erase(panel)
+			print(selected_fodder)
+
+func _on_Select_toggled(button_pressed):
+	toggled_upgrade = button_pressed
+	$VBoxContainer/Upgrade.disabled = false
+	if toggled_upgrade == false:
+		$VBoxContainer/Upgrade.disabled = true
+		for n in selected_fodder:
+			n.self_modulate = "00ffffff"
+		selected_fodder.clear()
+	print(toggled_upgrade)
+
+func _on_Upgrade_pressed():
+	pass # Replace with function body.

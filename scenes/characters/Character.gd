@@ -8,6 +8,7 @@ var composites: Array
 var rarity: int
 var level: int
 var exp_to_next: int
+var stat: int
 
 var rng = RandomNumberGenerator.new()
 
@@ -46,6 +47,7 @@ func init(is_load: bool = false):  # Pseudo-constructor
 		
 		level = 1
 		exp_to_next = LevelData.leveling[rarity]
+		stat = LevelData.base_stats[rarity]
 		print(full_name, ", ", gender, ", ", rarity)
 
 func random(size: int):
@@ -96,6 +98,7 @@ func load_character(character: Array):
 	rarity = character[3]
 	level = character[4]
 	exp_to_next = character[5]
+	stat = character[6]
 	var parts: Array
 	if gender == "female":
 		parts = Female.parts

@@ -18,7 +18,8 @@ func save_game():
 			n.composites,
 			n.rarity,
 			n.level,
-			n.exp_to_next
+			n.exp_to_next,
+			n.stat
 		])
 	
 	save.character_list = list

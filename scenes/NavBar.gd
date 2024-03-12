@@ -11,6 +11,7 @@ func _on_Save_pressed():
 
 func _on_Load_pressed():
 	CharacterInventory.load_game()
+	var _res = get_tree().reload_current_scene()
 
 func _on_Dungeon_pressed():
 	# warning-ignore:return_value_discarded

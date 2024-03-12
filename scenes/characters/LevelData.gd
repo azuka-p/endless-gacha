@@ -13,6 +13,12 @@ const leveling := {  # Exp amount of x rarity to increase a level
 	3: 20
 }
 
+const stat_increase := {  # Amount of stat increased per level of x rarity
+	1: 4,
+	2: 5,
+	3: 5
+}
+
 const fodder_worth := {  # Exp amount of x rarity if used as a fodder
 	1: 25,
 	2: 35,
