@@ -1,7 +1,7 @@
 extends Control
 
-
 const Character = preload("res://scenes/characters/Character.tscn")
+
 
 func _on_Summon10_pressed():
 	$NinePatchRect.visible = true
@@ -28,6 +28,7 @@ func _on_Summon10_pressed():
 		new_label.rect_position = Vector2(0, 10)
 		new_panel.add_child(new_label)
 	print("Total char: ", len(CharacterInventory.characters))
+
 
 func _on_GachaScreen_tree_exiting():
 	for n in $NinePatchRect/GridContainer.get_children():

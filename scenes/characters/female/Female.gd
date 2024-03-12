@@ -1,11 +1,18 @@
 extends Node2D
 
-
 const base = [
-	preload("res://assets/GandalfHardcore Character Asset Pack/Character skin colors/Female Skin1.png"),
-	preload("res://assets/GandalfHardcore Character Asset Pack/Character skin colors/Female Skin2.png"),
-	preload("res://assets/GandalfHardcore Character Asset Pack/Character skin colors/Female Skin3.png"),
-	preload("res://assets/GandalfHardcore Character Asset Pack/Character skin colors/Female Skin4.png")
+	preload(
+		"res://assets/GandalfHardcore Character Asset Pack/Character skin colors/Female Skin1.png"
+	),
+	preload(
+		"res://assets/GandalfHardcore Character Asset Pack/Character skin colors/Female Skin2.png"
+	),
+	preload(
+		"res://assets/GandalfHardcore Character Asset Pack/Character skin colors/Female Skin3.png"
+	),
+	preload(
+		"res://assets/GandalfHardcore Character Asset Pack/Character skin colors/Female Skin4.png"
+	)
 ]
 
 const hair = [
@@ -41,12 +48,14 @@ const hair = [
 	preload("res://assets/GandalfHardcore Character Asset Pack/Female Hair/Female Hair30.png")
 ]
 
-const clothes_top: Texture = preload("res://assets/GandalfHardcore Character Asset Pack/Female Clothing/Corset v2.png")
-const clothes_mid: Texture = preload("res://assets/GandalfHardcore Character Asset Pack/Female Clothing/Skirt.png")
-const hand: Texture = preload("res://assets/GandalfHardcore Character Asset Pack/Female Hand/Female Sword.png")
+const clothes_top: Texture = preload(
+	"res://assets/GandalfHardcore Character Asset Pack/Female Clothing/Corset v2.png"
+)
+const clothes_mid: Texture = preload(
+	"res://assets/GandalfHardcore Character Asset Pack/Female Clothing/Skirt.png"
+)
+const hand: Texture = preload(
+	"res://assets/GandalfHardcore Character Asset Pack/Female Hand/Female Sword.png"
+)
 
-const parts = [
-	"Base", "Hair",
-	"Top", "Mid",
-	"Hand"
-]
+const parts = ["Base", "Hair", "Top", "Mid", "Hand"]

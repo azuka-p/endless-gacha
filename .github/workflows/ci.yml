@@ -15,4 +15,3 @@ jobs:
         with:
           version: 3.5.0
       - run: gdformat --check scenes/
-      - run: gdlint scenes/

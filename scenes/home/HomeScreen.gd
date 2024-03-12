@@ -1,9 +1,9 @@
 extends Control
 
-
 var selected_upgrade: Panel
 var selected_fodder := []
 var toggled_upgrade := false
+
 
 func _ready():
 	var character_list = CharacterInventory.characters
@@ -27,10 +27,12 @@ func _ready():
 		new_label.rect_position = Vector2(0, 10)
 		new_panel.add_child(new_label)
 
+
 func _on_HomeScreen_tree_exiting():
 	for n in $NinePatchRect/ScrollContainer/GridContainer.get_children():
 		n.remove_child(n.get_child(0))
 		$NinePatchRect/ScrollContainer/GridContainer.remove_child(n)
+
 
 func _on_Panel_clicked(event: InputEvent, panel: Panel):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
@@ -56,6 +58,7 @@ func _on_Panel_clicked(event: InputEvent, panel: Panel):
 				selected_fodder.erase(panel)
 			print(selected_fodder)
 
+
 func _on_Select_toggled(button_pressed):
 	toggled_upgrade = button_pressed
 	$VBoxContainer/Upgrade.disabled = false
@@ -65,6 +68,7 @@ func _on_Select_toggled(button_pressed):
 			n.self_modulate = "00ffffff"
 		selected_fodder.clear()
 	print(toggled_upgrade)
+
 
 func _on_Upgrade_pressed():
 	var amount = 0

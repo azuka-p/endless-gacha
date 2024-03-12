@@ -18,9 +18,11 @@ var animation = Animation.new()
 const Names = preload("res://scenes/characters/RandomNames.gd")
 var names = Names.new()
 
+
 func _ready():
 	# init()
 	pass
+
 
 func init(is_load: bool = false):  # Pseudo-constructor
 	if is_load:
@@ -35,7 +37,7 @@ func init(is_load: bool = false):  # Pseudo-constructor
 			gender = "male"
 			generate_male()
 		full_name = names.get_full_name(gender)
-		
+
 		rng.randomize()
 		var roll = rng.randf()
 		if roll <= 0.05:
@@ -44,19 +46,24 @@ func init(is_load: bool = false):  # Pseudo-constructor
 			rarity = 2
 		else:
 			rarity = 1
-		
+
 		level = 1
 		exp_to_next = LevelData.leveling[rarity]
 		stat = LevelData.base_stats[rarity]
 		print(full_name, ", ", gender, ", ", rarity)
 
+
 func random(size: int):
 	rng.randomize()
 	return rng.randi_range(0, size - 1)
 
+
 func generate_idle(parts: Array, part_composites: Array):
 	for i in range(len(parts)):
-		animation.idle(get_node("CompositeSprites/{part}".format({"part": parts[i]})), part_composites[i])
+		animation.idle(
+			get_node("CompositeSprites/{part}".format({"part": parts[i]})), part_composites[i]
+		)
+
 
 func generate_female():
 	var base = Female.base
@@ -65,14 +72,11 @@ func generate_female():
 	var clothes_mid = Female.clothes_mid
 	var hand = Female.hand
 	var parts = Female.parts
-	
-	composites = [
-		base[random(len(base))], hair[random(len(hair))],
-		clothes_top, clothes_mid,
-		hand
-	]
-	
+
+	composites = [base[random(len(base))], hair[random(len(hair))], clothes_top, clothes_mid, hand]
+
 	generate_idle(parts, composites)
+
 
 func generate_male():
 	var base = Male.base
@@ -82,14 +86,18 @@ func generate_male():
 	var clothes_bot = Male.clothes_bot
 	var hand = Male.hand
 	var parts = Male.parts
-	
+
 	composites = [
-		base[random(len(base))], hair[random(len(hair))],
-		clothes_top, clothes_mid,
-		clothes_bot, hand
+		base[random(len(base))],
+		hair[random(len(hair))],
+		clothes_top,
+		clothes_mid,
+		clothes_bot,
+		hand
 	]
-	
+
 	generate_idle(parts, composites)
+
 
 func load_character(character: Array):
 	full_name = character[0]
@@ -105,6 +113,7 @@ func load_character(character: Array):
 	else:
 		parts = Male.parts
 	generate_idle(parts, composites)
+
 
 func add_exp(amount: int):
 	while amount >= exp_to_next:

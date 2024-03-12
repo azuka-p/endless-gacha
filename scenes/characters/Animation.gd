@@ -10,7 +10,7 @@ func idle(composite_part: AnimatedSprite, spritesheet: Texture):
 	for i in range(5):
 		var frame_tex := AtlasTexture.new()
 		frame_tex.atlas = full_spritesheet
-		frame_tex.region = Rect2(Vector2(80*i, 0), sprite_size)
+		frame_tex.region = Rect2(Vector2(80 * i, 0), sprite_size)
 		sprite_frames.add_frame("idle", frame_tex)
 	composite_part.frames = sprite_frames
 	composite_part.animation = "idle"

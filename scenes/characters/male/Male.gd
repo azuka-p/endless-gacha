@@ -1,11 +1,18 @@
 extends Node2D
 
-
 const base = [
-	preload("res://assets/GandalfHardcore Character Asset Pack/Character skin colors/Male Skin1.png"),
-	preload("res://assets/GandalfHardcore Character Asset Pack/Character skin colors/Male Skin2.png"),
-	preload("res://assets/GandalfHardcore Character Asset Pack/Character skin colors/Male Skin3.png"),
-	preload("res://assets/GandalfHardcore Character Asset Pack/Character skin colors/Male Skin4.png")
+	preload(
+		"res://assets/GandalfHardcore Character Asset Pack/Character skin colors/Male Skin1.png"
+	),
+	preload(
+		"res://assets/GandalfHardcore Character Asset Pack/Character skin colors/Male Skin2.png"
+	),
+	preload(
+		"res://assets/GandalfHardcore Character Asset Pack/Character skin colors/Male Skin3.png"
+	),
+	preload(
+		"res://assets/GandalfHardcore Character Asset Pack/Character skin colors/Male Skin4.png"
+	)
 ]
 
 const hair = [  # Hair 17 to 20 got wrong color on the first part
@@ -37,13 +44,17 @@ const hair = [  # Hair 17 to 20 got wrong color on the first part
 	preload("res://assets/GandalfHardcore Character Asset Pack/Male Hair/Male Hair30.png")
 ]
 
-const clothes_top: Texture = preload("res://assets/GandalfHardcore Character Asset Pack/Male Clothing/Shirt v2.png")
-const clothes_mid: Texture = preload("res://assets/GandalfHardcore Character Asset Pack/Male Clothing/Pants.png")
-const clothes_bot: Texture = preload("res://assets/GandalfHardcore Character Asset Pack/Male Clothing/Boots.png")
-const hand: Texture = preload("res://assets/GandalfHardcore Character Asset Pack/Male Hand/Male Sword.png")
+const clothes_top: Texture = preload(
+	"res://assets/GandalfHardcore Character Asset Pack/Male Clothing/Shirt v2.png"
+)
+const clothes_mid: Texture = preload(
+	"res://assets/GandalfHardcore Character Asset Pack/Male Clothing/Pants.png"
+)
+const clothes_bot: Texture = preload(
+	"res://assets/GandalfHardcore Character Asset Pack/Male Clothing/Boots.png"
+)
+const hand: Texture = preload(
+	"res://assets/GandalfHardcore Character Asset Pack/Male Hand/Male Sword.png"
+)
 
-const parts = [
-	"Base", "Hair",
-	"Top", "Mid",
-	"Bot", "Hand"
-]
+const parts = ["Base", "Hair", "Top", "Mid", "Bot", "Hand"]
