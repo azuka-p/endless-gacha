@@ -109,5 +109,11 @@ func load_character(character: Array):
 func add_exp(amount: int):
 	while amount >= exp_to_next:
 		amount -= exp_to_next
-		level += 1
+		stat += LevelData.stat_increase[rarity]
+		if level == LevelData.max_level[rarity]:
+			rarity += 1
+			level = 1
+		else:
+			level += 1
+		exp_to_next = LevelData.leveling[rarity]
 	exp_to_next -= amount

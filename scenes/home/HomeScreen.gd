@@ -67,4 +67,10 @@ func _on_Select_toggled(button_pressed):
 	print(toggled_upgrade)
 
 func _on_Upgrade_pressed():
-	pass # Replace with function body.
+	var amount = 0
+	for n in selected_fodder:
+		var fodder = n.get_child(0)
+		amount += LevelData.fodder_worth[fodder.rarity]
+		CharacterInventory.characters.erase(fodder)
+	selected_upgrade.get_child(0).add_exp(amount)
+	var _res = get_tree().reload_current_scene()
