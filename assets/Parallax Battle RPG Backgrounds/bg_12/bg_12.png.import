@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bg_15_0000_Layer-1.png-e38159e5fc48aa1054fcc56d8fe6e628.stex"
+path="res://.import/bg_12.png-ca76cc6a3d212d3f1213d1e9e31bd94c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Parallax Battle RPG Backgrounds/bg_15/bg_15_0000_Layer-1.png"
-dest_files=[ "res://.import/bg_15_0000_Layer-1.png-e38159e5fc48aa1054fcc56d8fe6e628.stex" ]
+source_file="res://assets/Parallax Battle RPG Backgrounds/bg_12/bg_12.png"
+dest_files=[ "res://.import/bg_12.png-ca76cc6a3d212d3f1213d1e9e31bd94c.stex" ]
 
 [params]
 
