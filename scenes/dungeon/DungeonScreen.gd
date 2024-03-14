@@ -1,8 +1,5 @@
 extends Control
 
-var selected_team := []
-var selected_stage: int
-
 
 func _ready():
 	var character_list = CharacterInventory.characters
@@ -35,27 +32,29 @@ func _on_DungeonScreen_tree_exiting():
 
 func _on_Panel_clicked(event: InputEvent, panel: Panel):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
-		if len(selected_team) < 5:
-			if not selected_team.has(panel):
-				panel.self_modulate = "ffffff"
-				selected_team.append(panel)
-			else:
-				panel.self_modulate = "00ffffff"
-				selected_team.erase(panel)
-		print(selected_team)
+		if len(StageData.selected_team) < 5 and not StageData.selected_team.has(panel):
+			panel.self_modulate = "ffffff"
+			StageData.selected_team.append(panel)
+		else:
+			panel.self_modulate = "00ffffff"
+			StageData.selected_team.erase(panel)
+		print(StageData.selected_team)
+		if StageData.selected_stage != 0:
+			$VBoxContainer/Go.disabled = false
 
 
 func _on_Go_pressed():
-	pass # Replace with function body.
+	var _res = get_tree().change_scene(
+		"res://scenes/dungeon/stage_{stage}/Stage{stage}.tscn".format(
+			{"stage": StageData.selected_stage}))
 
 
-func _on_Stage_1_toggled(_button_pressed):
-	if selected_stage == 1:
-		$"Stage/GridContainer/Stage 1".pressed = false
-		$VBoxContainer/Go.disabled = true
-		selected_stage = 0
+func _on_Stage_1_toggled(button_pressed):
+	if button_pressed:
+		if not StageData.selected_team.empty():
+			$VBoxContainer/Go.disabled = false
+		StageData.selected_stage = 1
 	else:
-		$"Stage/GridContainer/Stage 1".pressed = true
-		$VBoxContainer/Go.disabled = false
-		selected_stage = 1
-	print(selected_stage)
+		$VBoxContainer/Go.disabled = true
+		StageData.selected_stage = 0
+	print(StageData.selected_stage)
