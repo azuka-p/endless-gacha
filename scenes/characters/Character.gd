@@ -58,11 +58,31 @@ func random(size: int):
 	return rng.randi_range(0, size - 1)
 
 
-func generate_idle(parts: Array, part_composites: Array):
+func generate_animation(parts: Array, part_composites: Array):
 	for i in range(len(parts)):
-		animation.idle(
-			get_node("CompositeSprites/{part}".format({"part": parts[i]})), part_composites[i]
-		)
+		var part = get_node("CompositeSprites/{part}".format({"part": parts[i]}))
+		animation.idle(part, part_composites[i])
+		animation.attack(part, part_composites[i])
+		animation.die(part, part_composites[i])
+		if not part.is_connected("animation_finished", self, "_on_Animation_finished"):
+		# warning-ignore:return_value_discarded
+			part.connect("animation_finished", self, "_on_Animation_finished", [part])
+
+
+func _on_Animation_finished(part: AnimatedSprite):
+	if part.animation == "attack":
+		part.play("idle")
+
+
+func play_animation(anim: String):
+	var parts: Array
+	if gender == "female":
+		parts = Female.parts
+	else:
+		parts = Male.parts
+	for i in range(len(parts)):
+		var part = get_node("CompositeSprites/{part}".format({"part": parts[i]}))
+		part.play(anim)
 
 
 func generate_female():
@@ -75,7 +95,7 @@ func generate_female():
 
 	composites = [base[random(len(base))], hair[random(len(hair))], clothes_top, clothes_mid, hand]
 
-	generate_idle(parts, composites)
+	generate_animation(parts, composites)
 
 
 func generate_male():
@@ -96,7 +116,7 @@ func generate_male():
 		hand
 	]
 
-	generate_idle(parts, composites)
+	generate_animation(parts, composites)
 
 
 func load_character(character: Array):
@@ -112,7 +132,7 @@ func load_character(character: Array):
 		parts = Female.parts
 	else:
 		parts = Male.parts
-	generate_idle(parts, composites)
+	generate_animation(parts, composites)
 
 
 func add_exp(amount: int):

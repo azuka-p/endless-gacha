@@ -1,8 +1,11 @@
 extends Control
 
+var selected_team := []
+
 
 func _ready():
 	var character_list = CharacterInventory.characters
+	print(StageData.selected_team)
 	for i in range(len(character_list)):
 		var new_panel = Panel.new()
 		new_panel.rect_min_size = Vector2(160, 128)
@@ -32,18 +35,28 @@ func _on_DungeonScreen_tree_exiting():
 
 func _on_Panel_clicked(event: InputEvent, panel: Panel):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
-		if len(StageData.selected_team) < 5 and not StageData.selected_team.has(panel):
+		if len(selected_team) < 5 and not selected_team.has(panel):
 			panel.self_modulate = "ffffff"
-			StageData.selected_team.append(panel)
+			selected_team.append(panel)
 		else:
 			panel.self_modulate = "00ffffff"
-			StageData.selected_team.erase(panel)
-		print(StageData.selected_team)
-		if StageData.selected_stage != 0:
+			selected_team.erase(panel)
+		print(selected_team)
+		if len(selected_team) == 0:
+			$VBoxContainer/Go.disabled = true
+		elif StageData.selected_stage != 0:
 			$VBoxContainer/Go.disabled = false
 
 
 func _on_Go_pressed():
+	for n in selected_team:
+		var character = n.get_child(0)
+		StageData.selected_team.append(character)
+		StageData.team_stats.append({
+			"attack": character.stat,
+			"hp": 5 * character.stat
+		})
+		StageData.max_hp.append(5 * character.stat)
 	var _res = get_tree().change_scene(
 		"res://scenes/dungeon/stage_{stage}/Stage{stage}.tscn".format(
 			{"stage": StageData.selected_stage}))
@@ -51,7 +64,7 @@ func _on_Go_pressed():
 
 func _on_Stage_1_toggled(button_pressed):
 	if button_pressed:
-		if not StageData.selected_team.empty():
+		if not selected_team.empty():
 			$VBoxContainer/Go.disabled = false
 		StageData.selected_stage = 1
 	else:

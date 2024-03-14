@@ -20,14 +20,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -50.0
-margin_top = -120.0
-margin_right = 50.0
+margin_left = -150.0
+margin_top = -200.0
+margin_right = 150.0
 
 [node name="Summon10" type="Button" parent="VBoxContainer"]
-margin_right = 100.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 0, 30 )
+margin_right = 300.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
 text = "Summon x10"
 
 [node name="NavBar" parent="." instance=ExtResource( 1 )]
@@ -37,9 +37,9 @@ text = "Summon x10"
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 visible = false
 margin_left = 215.0
-margin_top = 220.0
+margin_top = 150.0
 margin_right = 1065.0
-margin_bottom = 500.0
+margin_bottom = 430.0
 texture = SubResource( 1 )
 patch_margin_left = 10
 patch_margin_top = 10

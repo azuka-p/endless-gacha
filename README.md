@@ -3,14 +3,15 @@
 ### Assets
 
 - https://gandalfhardcore.itch.io/free-pixel-art
+- https://github.com/Ertain/Random-Name-Generator
 - https://escalonamusic.itch.io/action-rpg-music-free
 - https://leohpaz.itch.io/rpg-essentials-sfx-free
 - https://mounirtohami.itch.io/pixel-art-gui-elements
+- https://monopixelart.itch.io/golems-pack
 
 ### Helpful Resources
 
 - https://fontmeme.com/pixel-fonts/
-- https://github.com/Ertain/Random-Name-Generator
 - https://kol.coldfront.net/thekolwiki/index.php/Advancement#Advancement_Requirements_Overview
 - https://www.youtube.com/watch?v=X3J0fSodKgs
 - https://www.youtube.com/watch?v=AkKywZDJNeE
