@@ -14,6 +14,8 @@ func _ready():
 
 func _on_Attack_pressed():
 	$VBoxContainer/Attack.disabled = true
+	$VBoxContainer/HBoxContainer/Prev.disabled = true
+	$VBoxContainer/HBoxContainer/Next.disabled = true
 	
 	var character = $Player.get_child(1)
 	character.position = Vector2(420, 472)
@@ -30,7 +32,8 @@ func _on_Attack_pressed():
 		$Enemy/HealthBar.value = 0
 		$Enemy/Golem/AnimatedSprite.play("die")
 		yield(get_tree().create_timer(1), "timeout")
-		win_condition()
+		if win_condition():
+			return
 	
 	$Enemy/Golem.position = Vector2(500, 280)
 	$Enemy/Golem/AnimatedSprite.play("attack")
@@ -45,8 +48,11 @@ func _on_Attack_pressed():
 		$Player/HealthBar.value = 0
 		character.play_animation("die")
 		yield(get_tree().create_timer(1), "timeout")
-		character_died()
+		if character_died():
+			return
 	$VBoxContainer/Attack.disabled = false
+	$VBoxContainer/HBoxContainer/Prev.disabled = false
+	$VBoxContainer/HBoxContainer/Next.disabled = false
 	
 	print(golem_hp)
 	print(StageData.team_stats[current].hp)
@@ -65,16 +71,50 @@ func win_condition():
 		n.add_exp(100)
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://scenes/dungeon/DungeonScreen.tscn")
+	return true
 
 
 func character_died():
-	pass
+	print(StageData.selected_team)
+	var ded = StageData.selected_team.pop_at(current)
+	StageData.team_stats.remove(current); StageData.max_hp.remove(current)
+	CharacterInventory.characters.erase(ded)
+	print(StageData.selected_team)
+	
+	$Player.remove_child($Player.get_child(1))
+	if current <= StageData.selected_team.size() - 1:
+		$Player.add_child(StageData.selected_team[current])
+	elif StageData.selected_team.size() == 0:
+		# GAMEOVER
+		print("GAMEOVER")
+		# warning-ignore:return_value_discarded
+		get_tree().change_scene("res://scenes/dungeon/DungeonScreen.tscn")
+		return true
+	else:
+		current = 0
+		$Player.add_child(StageData.selected_team[current])
+	$Player.get_child(1).position = Vector2(810, 472)
+	$Player/HealthBar.value = stepify(float(StageData.team_stats[current].hp) / StageData.max_hp[current] * 100, 0.01)
+	return false
+
+
+func _on_Prev_pressed():
+	pass # Replace with function body.
+
+
+func _on_Next_pressed():
+	pass # Replace with function body.
 
 
 func _on_Stage1_tree_exiting():
-	$Player.remove_child($Player.get_child(1))
+	if $Player.get_child_count() == 2:
+		$Player.remove_child($Player.get_child(1))
 
 
 func _on_Stage1_tree_exited():
 	for n in StageData.selected_team:
 		n.position = Vector2(0, 0)
+	StageData.selected_team = []
+	StageData.selected_stage = 0
+	StageData.team_stats = []
+	StageData.max_hp = []
