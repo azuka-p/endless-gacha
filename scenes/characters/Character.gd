@@ -139,7 +139,7 @@ func add_exp(amount: int):
 	while amount >= exp_to_next:
 		amount -= exp_to_next
 		stat += LevelData.stat_increase[rarity]
-		if level == LevelData.max_level[rarity]:
+		if level == LevelData.max_level[rarity] and rarity != 3:
 			rarity += 1
 			level = 1
 		else:

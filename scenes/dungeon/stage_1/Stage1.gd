@@ -66,6 +66,13 @@ func _on_EnemyAttack_end():
 	$Enemy/Golem.position = Vector2(150, 280)
 
 
+func update_player():  # Change var current before calling this
+	$Player.remove_child($Player.get_child(1))
+	$Player.add_child(StageData.selected_team[current])
+	$Player.get_child(1).position = Vector2(810, 472)
+	$Player/HealthBar.value = stepify(float(StageData.team_stats[current].hp) / StageData.max_hp[current] * 100, 0.01)
+
+
 func win_condition():
 	for n in StageData.selected_team:
 		n.add_exp(100)
@@ -81,29 +88,34 @@ func character_died():
 	CharacterInventory.characters.erase(ded)
 	print(StageData.selected_team)
 	
-	$Player.remove_child($Player.get_child(1))
-	if current <= StageData.selected_team.size() - 1:
-		$Player.add_child(StageData.selected_team[current])
-	elif StageData.selected_team.size() == 0:
+	if StageData.selected_team.size() == 0:
 		# GAMEOVER
 		print("GAMEOVER")
 		# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://scenes/dungeon/DungeonScreen.tscn")
 		return true
-	else:
+	elif current > StageData.selected_team.size() - 1:
 		current = 0
-		$Player.add_child(StageData.selected_team[current])
-	$Player.get_child(1).position = Vector2(810, 472)
-	$Player/HealthBar.value = stepify(float(StageData.team_stats[current].hp) / StageData.max_hp[current] * 100, 0.01)
+	update_player()
 	return false
 
 
 func _on_Prev_pressed():
-	pass # Replace with function body.
+	if StageData.selected_team.size() == 1:
+		return
+	current -= 1
+	if current < 0:
+		current = StageData.selected_team.size() - 1
+	update_player()
 
 
 func _on_Next_pressed():
-	pass # Replace with function body.
+	if StageData.selected_team.size() == 1:
+		return
+	current += 1
+	if current > StageData.selected_team.size() - 1:
+		current = 0
+	update_player()
 
 
 func _on_Stage1_tree_exiting():
