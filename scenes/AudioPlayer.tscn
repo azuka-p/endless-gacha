@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/Action RPG Music/BGM13dungeon2.wav" type="AudioStream" id=1]
+[ext_resource path="res://assets/Action RPG Music/BGM07battle1.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/Action RPG Music/BGM04town0.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/RPG_Essentials_Free/10_Battle_SFX/15_Impact_flesh_02.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/RPG_Essentials_Free/10_Battle_SFX/22_Slash_04.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/RPG_Essentials_Free/10_Battle_SFX/69_Enemy_death_01.wav" type="AudioStream" id=6]
+
+[node name="AudioPlayer" type="Node"]
+
+[node name="MainMenuBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -5.0
+
+[node name="HomeBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -5.0
+
+[node name="StageBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -5.0
+
+[node name="PlayerAttack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="EnemyAttack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )

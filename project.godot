@@ -37,6 +37,7 @@ Female="*res://scenes/characters/female/Female.gd"
 Male="*res://scenes/characters/male/Male.gd"
 LevelData="*res://scenes/characters/LevelData.gd"
 StageData="*res://scenes/dungeon/StageData.gd"
+AudioPlayer="*res://scenes/AudioPlayer.tscn"
 
 [display]
 

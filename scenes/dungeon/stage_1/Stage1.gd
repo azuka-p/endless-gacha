@@ -6,6 +6,9 @@ var current: int
 
 
 func _ready():
+	AudioPlayer.get_child(0).stop()
+	AudioPlayer.get_child(1).stop()
+	AudioPlayer.get_child(2).play()
 	print(StageData.selected_team)
 	print(StageData.team_stats)
 	$Player.add_child(StageData.selected_team[current])
@@ -20,6 +23,8 @@ func _on_Attack_pressed():
 	var character = $Player.get_child(1)
 	character.position = Vector2(420, 472)
 	character.play_animation("attack")
+	AudioPlayer.get_child(3).stop()
+	AudioPlayer.get_child(3).play()
 	var base = character.get_child(0).get_child(0)
 	if not base.is_connected("animation_finished", self, "_on_PlayerAttack_end"):
 		# warning-ignore:return_value_discarded
@@ -31,12 +36,16 @@ func _on_Attack_pressed():
 	if golem_hp <= 0:
 		$Enemy/HealthBar.value = 0
 		$Enemy/Golem/AnimatedSprite.play("die")
+		AudioPlayer.get_child(5).stop()
+		AudioPlayer.get_child(5).play()
 		yield(get_tree().create_timer(1), "timeout")
 		if win_condition():
 			return
 
 	$Enemy/Golem.position = Vector2(500, 280)
 	$Enemy/Golem/AnimatedSprite.play("attack")
+	AudioPlayer.get_child(4).stop()
+	AudioPlayer.get_child(4).play()
 	if not $Enemy/Golem/AnimatedSprite.is_connected(
 		"animation_finished", self, "_on_EnemyAttack_end"
 	):
@@ -51,6 +60,8 @@ func _on_Attack_pressed():
 	if StageData.team_stats[current].hp <= 0:
 		$Player/HealthBar.value = 0
 		character.play_animation("die")
+		AudioPlayer.get_child(5).stop()
+		AudioPlayer.get_child(5).play()
 		yield(get_tree().create_timer(1), "timeout")
 		if character_died():
 			return
@@ -126,6 +137,8 @@ func _on_Next_pressed():
 
 
 func _on_Stage1_tree_exiting():
+	AudioPlayer.get_child(2).stop()
+	AudioPlayer.get_child(1).play()
 	if $Player.get_child_count() == 2:
 		$Player.remove_child($Player.get_child(1))
 
