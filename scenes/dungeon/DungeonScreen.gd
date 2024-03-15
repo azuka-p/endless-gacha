@@ -52,14 +52,13 @@ func _on_Go_pressed():
 	for n in selected_team:
 		var character = n.get_child(0)
 		StageData.selected_team.append(character)
-		StageData.team_stats.append({
-			"attack": character.stat,
-			"hp": 5 * character.stat
-		})
+		StageData.team_stats.append({"attack": character.stat, "hp": 5 * character.stat})
 		StageData.max_hp.append(5 * character.stat)
 	var _res = get_tree().change_scene(
 		"res://scenes/dungeon/stage_{stage}/Stage{stage}.tscn".format(
-			{"stage": StageData.selected_stage}))
+			{"stage": StageData.selected_stage}
+		)
+	)
 
 
 func _on_Stage_1_toggled(button_pressed):

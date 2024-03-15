@@ -65,7 +65,7 @@ func generate_animation(parts: Array, part_composites: Array):
 		animation.attack(part, part_composites[i])
 		animation.die(part, part_composites[i])
 		if not part.is_connected("animation_finished", self, "_on_Animation_finished"):
-		# warning-ignore:return_value_discarded
+			# warning-ignore:return_value_discarded
 			part.connect("animation_finished", self, "_on_Animation_finished", [part])
 
 
